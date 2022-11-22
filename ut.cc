@@ -19,15 +19,17 @@ int main(){
   cout<<"Du skrev in heltalet: "<<num<<endl<<endl;
 
   cout<<"Skriv in fem heltal: ";
-
-  for (int i = 0; i < 5;i++){
-    cin>>num;
-    if(i==0){
-      cout<<"Du skrev in heltalen: ";
-    }
-    cout << num << " ";
-  }
-  cout<<endl<<endl;
+  cin>>num; 
+  cout<<"Du skrev in heltalen: ";
+  cout << num << " ";
+  cin>>num;
+  cout<<num<<" ";
+  cin>>num;
+  cout<<num<<" ";
+  cin>>num;
+  cout<<num<<" ";
+  cin>>num;
+  cout<<num<<endl<<endl;;
  
   cout<<"Skriv in ett flyttal: ";
   cin>>flo;
@@ -82,18 +84,11 @@ int main(){
 
 
   cout<<"Skriv in en rad med tre ord: ";
-  for(int i = 0; i < 3; i++){
-    cin>>str;
-    if(i==0){
-      cout<<"Du skrev in: \""<<str;
-    }
-    else if(i==1){
-      cout<<"\", \""<<str;
-    }
-    else if(i==2){
-      cout<<"\" och \""<<str;
-    }
-  }
-  cout<<"\"."<<endl;
+  cin>>str;
+  cout<<"Du skrev in: \""<<str;
+  cin>>str;
+  cout<<"\", \""<<str;
+  cin>>str;
+  cout<<"\" och \""<<str<<"\"."<<endl;
 
 }
