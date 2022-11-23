@@ -9,113 +9,112 @@ using namespace std;
 
 ////////////////////////
 
-int sub_fact(int const item){
+  int sub_fact(int const item){
       
-  int I = item;
+    int I = item;
 
-    if (I == 0){
-      return 1;
-    }
-    else{ 
-      return I * sub_fact(I-1);
-    }
-}
+      if (I == 0){
+        return 1;
+      }
+      else{ 
+        return I * sub_fact(I-1);
+      }
+              } 
 
 ////////////    
 
-void Factorial_Program(){
+  void Factorial_Program(){
 
-  int N;
+    int N;
 
-  cout<<"Mata in ett heltal: ";
-  cin>> N;
-  cout<<"Fakulteten av "<< N <<" är "<<sub_fact(N)<<endl;
-}
+    cout<<"Mata in ett heltal: ";
+    cin>> N;
+    cout<<"Fakulteten av "<< N <<" är "<<sub_fact(N)<<endl;
+            }
 
 
-void Sub_Mult(string const item,
-             int    const value){
+  void Sub_Mult(string const item,
+                int    const value){
 
- for (int i = 0; i < value; i++ ){
-   cout<<item;
- }
-}
-//
+    for (int i = 0; i < value; i++ ){
+      cout<<item;
+    }
+  }
+
 //////////////
-//
-void Multiply(){
 
- int numb;
- string str;
+  void Multiply(){
 
- cout<<"Mata in en text och ett heltal:";
- cin>>str>>numb;
- cout<<"Den multiplicerade texten är ";
- Sub_Mult(str,numb);
- cout<<endl;
- }
+    int numb;
+    string str;
+   
+    cout<<"Mata in en text och ett heltal:";
+    cin>>str>>numb;
+    cout<<"Den multiplicerade texten är ";
+    Sub_Mult(str,numb);
+    cout<<endl;
+    }
 
 //////////////////////////
 
-void Sub_swap(int     a,
-             double  b){
- double c;
+  void Sub_swap(int&     a,
+                double&  b){
+    double c;
 
- c = a;
- a = static_cast<int>(ceil(b));
- b = c; 
+    c = a;
+    a = static_cast<int>(ceil(b));
+    b = c; 
                   }
 
 ///////////
 
-void Swap(){
+  void Swap(){
 
- int a;
- double b;
-
- cout<<"Mata in ett heltal och ett flyttal: ";
- cin>>a>>b;
- Sub_swap(a,b);
- cout<<"Heltalets värde är nu "<<a<<endl
- <<"Flyttalets värde är nu "<<b<<endl;
-              }
+  int a;
+  double b;
+ 
+  cout<<"Mata in ett heltal och ett flyttal: ";
+  cin>>a>>b;
+  Sub_swap(a,b);
+  cout<<"Heltalets värde är nu "<<a<<endl
+  <<"Flyttalets värde är nu "<<fixed<<setw(1)<<setprecision(1)<<b<<endl;
+            }
 
 ////////////////////////
 
- double Sub_calc_string(string const text_1,
-                     string const text_2,
-                     int& total_length,
-                     double& mean_length){
+  void Sub_calc_string(string const text_1,
+                      string const text_2,
+                      int& total_length,
+                      double& mean_length){
    
-   total_length = text_1.size() + text_2.size();
-   mean_length = (static_cast<double>(total_length) / 2.0);
-
-   return 0;
+    total_length = text_1.size() + text_2.size();
+    mean_length = (static_cast<double>(total_length) / 2.0);
                      }
 
 ////////////////////////////////////              
 
- void Calc_string(){
+  void Calc_string(){
 
-   int total_length;
-   double mean_length;
-   string text_1;
-   string text_2;
+    int total_length;
+    double mean_length;
+    string text_1;
+    string text_2;
 
-   cout<<"Mata in två ord: ";
-   cin>>text_1;
-   cin>>text_2;
-   Sub_calc_string(text_1,
-                   text_2,
-                   total_length,
-                   mean_length);
-   cout<<"Totallängd: "<<total_length<<endl
-   <<"Medellängd: "<<fixed<<setw(2)<<setprecision(1)<<mean_length<<endl;
- }
+
+    cout<<"Mata in två ord: ";
+    cin>>text_1;
+    cin>>text_2;
+    Sub_calc_string(text_1,
+                    text_2,
+                    total_length,
+                    mean_length);
+    cout<<"Totallängd: "<<total_length<<endl
+    <<"Medellängd: "<<fixed<<setw(2)<<setprecision(1)<<mean_length<<endl;
+  }
 
 ////////////////////////
 
-int Menu_Selection(int& selection){
+  void Menu_Selection(int& selection){
 
     while(true){
       cout<<"1. Beräkna N-fakultet."<<endl;
@@ -133,8 +132,7 @@ int Menu_Selection(int& selection){
           break;
         }   
     }
-    return selection;
-    }
+  }
     
 //Main///////////////////
 
