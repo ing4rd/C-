@@ -103,7 +103,7 @@ using runner_arr = vector<runner>;
         cout<<"Mata in deltagare:";
 
             while(feed_struct(person)){
-                
+
             participants.push_back(person);    
                 }
 
@@ -111,7 +111,7 @@ using runner_arr = vector<runner>;
 
                 cout<<"Tider "<<print_surename(person)<<":";
                 feed_time(person);
-            }
+            }//Måste sortera listan här.
 
 
         cout<<"Efternamn   Förnamn           Klubb: Tider"<<endl
