@@ -35,12 +35,19 @@
         temp = item;
         return temp * 0.8;
     }
+///average///////////
 
-///average////////////
+    double average(int sum_of_all,
+                   int amount){
 
-    double average(string long_word, string short_word){
-      
-      return (long_word.size() + short_word.size()) / 2;;
+        return static_cast<double>(sum_of_all) / static_cast<double>(amount);
+    }
+///add///////////////
+
+    void add(string item,
+             double& sum){
+
+      sum = sum + item.size();
     }
 //Main///////////////
   
@@ -53,6 +60,7 @@ int main(){
     int letters = 0;
     int num = 0;
     int blank = 0;
+    double sum = 0;
     char cha;
     bool no_text_buffer = true;
     string str;
@@ -76,11 +84,12 @@ int main(){
     cout<<endl<<endl;
 
 
-    cout<<"Celsius Kelvin Fahrenheit Reaumur"<<endl//Skriver ut fel antal decimaler
+    cout<<"Celsius Kelvin Fahrenheit Reaumur"<<endl
     <<"---------------------------------------"<<endl;
         while(start<=end){
-            cout<<setw(7)<<start<<setw(7)<<cel_kel(start)
-            <<setw(11)<<cel_far(start)<<setw(8)<<cel_rem(start)<<endl;
+            cout<<setw(7)<<start<<fixed<<setw(7)<<setprecision(2)<<cel_kel(start)
+            <<fixed<<setw(11)<<setprecision(2)<<cel_far(start)<<fixed<<setw(8)
+            <<setprecision(2)<<cel_rem(start)<<endl;
             start++;
         }
     cout<<"---------------------------------------"<<endl<<endl;
@@ -102,7 +111,7 @@ int main(){
 
   cout<<"Texten innehöll:"<<endl<<"Alfabetiska tecken:"<<letters<<endl
   <<"Siffertecken......:"<<num<<endl<<"Vita tecken.......:"<<blank<<endl<<endl;
-
+  cin.ignore(1000,'\n');
 
   cout<<"Del 3: Ordhantering"<<endl<<"Mata in en text:"<<endl;
   num = 0;
@@ -110,6 +119,7 @@ int main(){
     while(cin>>str){
 
         no_text_buffer = false;
+        add(str,sum);
 
         if(num == 0){
           short_word = str;
@@ -123,15 +133,13 @@ int main(){
         }
         num++;
     }
-
     if(no_text_buffer){
       cout<<"Inga ord matades in."<<endl;
     }
-  
     else{
     cout<<"Texten innehöll "<<num<<" ord."<<endl;
-    cout<<"Det kortaste ordet var "<<short_word<<" med "<<short_word.size()<<" tecken."<<endl;
-    cout<<"Det längsta ordet var "<<long_word<<" med "<<long_word.size()<<" tecken."<<endl;
-    cout<<"Medelordlängden var "<<average(long_word,short_word)<<" tecken."<<endl;
+    cout<<"Det kortaste ordet var \""<<short_word<<"\" med "<<short_word.size()<<" tecken."<<endl;
+    cout<<"Det längsta ordet var \""<<long_word<<"\" med "<<long_word.size()<<" tecken."<<endl;
+    cout<<"Medelordlängden var "<<fixed<<setw(1)<<setprecision(1)<<average(sum,num)<<" tecken."<<endl;
     }
  }
