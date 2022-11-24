@@ -12,9 +12,9 @@ using time_arr = vector<double>;
 
     struct runner
     {
-        string         surename; 
-        string         lastname; 
-        string         club;     
+        string         surename{}; 
+        string         lastname{}; 
+        string         club{};     
         vector<double> times;    
     };
     
@@ -60,7 +60,11 @@ using runner_arr = vector<runner>;
                 }
             }
 
-        cout<<fixed<<setw(16)<<item.club<<":"<<endl;////////////////////////////Ska lägga till tider.        
+        cout<<fixed<<setw(16)<<item.club<<": ";       
+            for(auto & time : item.times){
+                cout<<fixed<<setw(10)<<setprecision(2)<<item.times[time];
+            }
+        cout<<endl;
     }
 
 //////////////////////
@@ -79,10 +83,14 @@ using runner_arr = vector<runner>;
 
 ///////////
 
+
     void feed_time(runner& item){
 
+    double index = 0;
+
         while(more_time(item)){
-        ;}
+        ;
+        }//sortera tider
     }
 
 //////////////////////
@@ -111,7 +119,7 @@ using runner_arr = vector<runner>;
 
                 cout<<"Tider "<<print_surename(person)<<":";
                 feed_time(person);
-            }//Måste sortera listan här.
+            }//sorteras användare
 
 
         cout<<"Efternamn   Förnamn           Klubb: Tider"<<endl
