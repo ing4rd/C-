@@ -52,8 +52,8 @@ using runner_arr = vector<runner>;
 
     int num;
 
-        cout<<fixed<<setw(9)<<item.surename
-        <<fixed<<setw(10)<<item.lastname;
+        cout<<fixed<<setw(9)<<item.lastname
+        <<fixed<<setw(10)<<item.surename;
             for(int i = 0; i < item.club.size();i++){
                 if(item.club[i] == '_'){
                     item.club[i] = ' ';
@@ -62,7 +62,9 @@ using runner_arr = vector<runner>;
 
         cout<<fixed<<setw(16)<<item.club<<": ";       
             for(auto & time : item.times){
-                cout<<fixed<<setw(10)<<setprecision(2)<<item.times[time];
+                cout<<fixed<<setw(10)<<setprecision(2)<<time;
+                
+
             }
         cout<<endl;
     }
@@ -86,7 +88,7 @@ using runner_arr = vector<runner>;
 
     void feed_time(runner& item){
 
-    double index = 0;
+    double index {};
 
         while(more_time(item)){
         ;
@@ -105,9 +107,13 @@ using runner_arr = vector<runner>;
     int main(){
 
         runner_arr participants;
-        int counter = 0;
+        int counter {};
         runner person;
+        
+        //vector<int> v{6,2,5,3,5,6};
 
+        //sort(begin(v), end(v));
+        
         cout<<"Mata in deltagare:";
 
             while(feed_struct(person)){
@@ -126,6 +132,9 @@ using runner_arr = vector<runner>;
         <<"=============================================="<<endl;
 
             for(auto & person : participants){
+                    sort(person.times.begin(),person.times.end() );
+                    //sort(person.begin(), person.end());
+
                     print_struct(person);
                     }
 
