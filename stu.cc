@@ -37,7 +37,6 @@ using runner_arr = vector<runner>;
 
 ////////
 
-
     void sorter(runner_arr& item){
 
         for(auto & person : item){
@@ -65,7 +64,6 @@ using runner_arr = vector<runner>;
     }
 
 ///////////
-
 
     void feed_time(runner& item){
 
@@ -108,7 +106,6 @@ using runner_arr = vector<runner>;
     }
 
 /////////
-
 
     void print_struct(runner const item){
 
