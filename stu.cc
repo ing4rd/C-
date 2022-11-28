@@ -98,7 +98,6 @@ using runner_arr = vector<runner>;
     item.club = temp;
 
     return true;
-
     }
 
 /////PRINT//////////////
