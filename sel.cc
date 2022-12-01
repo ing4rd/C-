@@ -6,49 +6,6 @@
 
   using namespace std;
 
-///cel_kel/////////////
-
-    double cel_kel(int const item){
-        
-        double temp;
-
-        temp = item;
-        return temp + 273.15;
-    }
-    
-///cel_far////////////
-
-    double cel_far(int const item){
-
-        double temp;
-
-        temp = item;
-        return (temp * 1.8) + 32;
-    }
-
-///cel_rem/////////////
-
-    double cel_rem(int const item){
-
-        double temp;
-
-        temp = item;
-        return temp * 0.8;
-    }
-///average///////////
-
-    double average(int sum_of_all,
-                   int amount){
-
-        return static_cast<double>(sum_of_all) / static_cast<double>(amount);
-    }
-///add///////////////
-
-    void add(string item,
-             double& sum){
-
-      sum = sum + item.size();
-    }
 //Main///////////////
   
 int main(){
@@ -61,6 +18,10 @@ int main(){
     int num = 0;
     int blank = 0;
     double sum = 0;
+    double kel;
+    double far;
+    double rem;
+    double average;
     char cha;
     bool no_text_buffer = true;
     string str;
@@ -68,18 +29,23 @@ int main(){
     string long_word;
     
 
-///////////////////////
+//////////
 
     cout<<"Del 1: Temperaturtabell"<<endl;    
-    do{
     cout<<"Ange startvärde: ";
     cin>>start;
+    do{
     cout<<"Ange slutvärde: ";
     cin>>end;
     if(start > end){
         cout<<"Felaktigt slutvärde!"<<endl;
         cin.ignore(1000,'\n');
     }
+
+    kel = start + 273.15;
+    far = (start * 1.8) + 32;
+    rem = start * 0.8;
+
     }while(start > end);
     cout<<endl<<endl;
 
@@ -87,10 +53,13 @@ int main(){
     cout<<"Celsius Kelvin Fahrenheit Reaumur"<<endl
     <<"---------------------------------------"<<endl;
         while(start<=end){
-            cout<<setw(7)<<start<<fixed<<setw(7)<<setprecision(2)<<cel_kel(start)
-            <<fixed<<setw(11)<<setprecision(2)<<cel_far(start)<<fixed<<setw(8)
-            <<setprecision(2)<<cel_rem(start)<<endl;
+            cout<<setw(7)<<start<<fixed<<setw(7)<<setprecision(2)<<kel
+            <<fixed<<setw(11)<<setprecision(2)<<far<<fixed<<setw(8)
+            <<setprecision(2)<<rem<<endl;
             start++;
+            kel = start + 273.15;
+            far = (start * 1.8) + 32;
+            rem = start * 0.8;
         }
     cout<<"---------------------------------------"<<endl<<endl;
     cin.ignore(1000,'\n');
@@ -119,7 +88,8 @@ int main(){
     while(cin>>str){
 
         no_text_buffer = false;
-        add(str,sum);
+
+        sum = sum + str.size();
 
         if(num == 0){
           short_word = str;
@@ -137,9 +107,13 @@ int main(){
       cout<<"Inga ord matades in."<<endl;
     }
     else{
+
+    average = (static_cast<double>(sum) / static_cast<double>(num));
+
+
     cout<<"Texten innehöll "<<num<<" ord."<<endl;
     cout<<"Det kortaste ordet var \""<<short_word<<"\" med "<<short_word.size()<<" tecken."<<endl;
     cout<<"Det längsta ordet var \""<<long_word<<"\" med "<<long_word.size()<<" tecken."<<endl;
-    cout<<"Medelordlängden var "<<fixed<<setw(1)<<setprecision(1)<<average(sum,num)<<" tecken."<<endl;
+    cout<<"Medelordlängden var "<<fixed<<setw(1)<<setprecision(1)<<average<<" tecken."<<endl;
     }
  }
