@@ -32,30 +32,44 @@ int main(){
 //////////
 
     cout<<"Del 1: Temperaturtabell"<<endl;    
-    cout<<"Ange startvärde: ";
-    cin>>start;
-    do{
-    cout<<"Ange slutvärde: ";
-    cin>>end;
-    if(start > end){
-        cout<<"Felaktigt slutvärde!"<<endl;
-        cin.ignore(1000,'\n');
-    }
+      while(true){
+        cout<<"Ange startvärde: ";
+        cin>>start;
+          if(start < -273.15){
+            cout<<"Felaktigt startvärde!"<<endl;
+            }
+          else{
+            break;
+          }
+      }
+      do{
+        cout<<"Ange slutvärde: ";
+        cin>>end;
 
-    kel = start + 273.15;
-    far = (start * 1.8) + 32;
-    rem = start * 0.8;
+          if(start > end){
+            cout<<"Felaktigt slutvärde!"<<endl;
+            cin.ignore(1000,'\n');
+                    }
+  
+        kel = start + 273.15;
+        far = (start * 1.8) + 32;
+        rem = start * 0.8;
 
-    }while(start > end);
-    cout<<endl<<endl;
+      }while(start > end);
 
 
-    cout<<"Celsius Kelvin Fahrenheit Reaumur"<<endl
+    cout<<"Celsius   Kelvin   Fahrenheit   Reaumur"<<endl
     <<"---------------------------------------"<<endl;
         while(start<=end){
-            cout<<setw(7)<<start<<fixed<<setw(7)<<setprecision(2)<<kel
-            <<fixed<<setw(11)<<setprecision(2)<<far<<fixed<<setw(8)
-            <<setprecision(2)<<rem<<endl;
+            cout.width(7);
+            cout<<start;
+            cout.width(9);
+            cout<<fixed<<setprecision(2)<<kel;
+            cout.width(13);
+            cout<<fixed<<setprecision(2)<<far;
+            cout.width(10);
+            cout<<fixed<<setprecision(2)<<rem<<endl;
+
             start++;
             kel = start + 273.15;
             far = (start * 1.8) + 32;
@@ -64,25 +78,29 @@ int main(){
     cout<<"---------------------------------------"<<endl<<endl;
     cin.ignore(1000,'\n');
 
+//////////
+
   cout<<"Del 2: Teckenhantering"<<endl;
     for(int i{}; i < 10; i++){
-    cin.get(cha);
-      if(isdigit(cha)){
-        num++;
-      }
-      if(isalpha(cha)){
-        letters++;
-      }
-      if(isspace(cha)){
-        blank++;
-      }
+      cin.get(cha);
+        if(isdigit(cha)){
+          num++;
+        }
+        else if(isalpha(cha)){
+          letters++;
+        }
+        else if(isspace(cha)){
+          blank++;
+        }
     }
 
   cout<<"Texten innehöll:"<<endl<<"Alfabetiska tecken:"<<letters<<endl
   <<"Siffertecken......:"<<num<<endl<<"Vita tecken.......:"<<blank<<endl<<endl;
   cin.ignore(1000,'\n');
 
-  cout<<"Del 3: Ordhantering"<<endl<<"Mata in en text:"<<endl;
+//////////
+
+  cout<<"Del 3: Ordhantering"<<endl<<"Mata in en text:"<<endl<<endl;
   num = 0;
 
     while(cin>>str){
@@ -108,12 +126,12 @@ int main(){
     }
     else{
 
-    average = (static_cast<double>(sum) / static_cast<double>(num));
+      average = (static_cast<double>(sum) / static_cast<double>(num));
 
 
-    cout<<"Texten innehöll "<<num<<" ord."<<endl;
-    cout<<"Det kortaste ordet var \""<<short_word<<"\" med "<<short_word.size()<<" tecken."<<endl;
-    cout<<"Det längsta ordet var \""<<long_word<<"\" med "<<long_word.size()<<" tecken."<<endl;
-    cout<<"Medelordlängden var "<<fixed<<setw(1)<<setprecision(1)<<average<<" tecken."<<endl;
+      cout<<"Texten innehöll "<<num<<" ord."<<endl;
+      cout<<"Det kortaste ordet var \""<<short_word<<"\" med "<<short_word.size()<<" tecken."<<endl;
+      cout<<"Det längsta ordet var \""<<long_word<<"\" med "<<long_word.size()<<" tecken."<<endl;
+      cout<<"Medelordlängden var "<<fixed<<setw(1)<<setprecision(1)<<average<<" tecken."<<endl;
     }
  }
