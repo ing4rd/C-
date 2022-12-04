@@ -1,3 +1,4 @@
+// antin019: Samarbetat med omiaz320, Omid Azimi, samma program
 # include <string>
 # include <iomanip>
 # include <iostream>
@@ -10,7 +11,7 @@
 
 using namespace std;
 
-/////ADD//////////////
+///////////////
 
     bool operator ==(hero_type const a,
                      hero_type const b){
@@ -32,6 +33,34 @@ using namespace std;
         return false;
         }
 
+/////////////
+
+    bool compare_matches(hero_type const item,
+                         int       const compare){
+        
+        for (int i = 0; i < item.intrest.size(); i++){
+            if(compare == item.intrest.at(i)){
+                return true;
+                }
+        }
+        return false;
+    }
+
+///////////
+
+    void print_to_stream(hero_type const item,
+                         ostream & write_to){
+
+        write_to<<" "<<item.name<<" "<<item.bithyear
+        <<" "<<item.weight<<" "<<item.hair_color;
+
+            for( int i = 0; i < item.intrest.size();i++){
+                write_to<<" "<<item.intrest.at(i);
+                    }
+
+        write_to<<endl;
+    }
+
 //////////
 
     bool sort_by_name(hero_type const a,
@@ -40,19 +69,6 @@ using namespace std;
         return a.name < b.name;
 
                       }
-
-//////////
-
-    bool check_for_existing_hero(register_type const item,
-                                 hero_type     const hero){
-
-        for(int i = 0; i < item.size(); i++){
-            if(hero == item.at(i)){
-                return true;
-            }
-        }
-        return false;
-    }
 
 ///////////
 
@@ -77,49 +93,25 @@ using namespace std;
                 hero.intrest.insert(hero.intrest.begin(),like);
                     }
         sort(hero.intrest.begin(), hero.intrest.end());
-
+       
     }
 
-//////////
-
-    void add(register_type & heroes){
-
-        hero_type hero;
-
-        get_register_1(heroes);
-
-            while(true){
-
-                cout<<"Enter hero information:"<<endl;
-
-                    feed_struct(hero);
-
-                    if(check_for_existing_hero(heroes,hero)){
-                        cout<<"Hero already in register. ";
-                    }
-                    else{
-                        heroes.push_back(hero);
-                        sort(heroes.begin(),heroes.end(),sort_by_name);
-                        add_to_register_1(heroes);
-                        cout<<"The hero was added to the register on file REGISTER_1.TXT"<<endl;
-                        break;
-                    }
-            }
-    }
-
-/////SEARCH////////////
+////////////
 
     void print_hero(hero_type const item){
 
-        cout.width(10); 
-        cout<<left<<item.name;
+        double weight_as_flo = stod(item.weight);
+
         cout.width(11); 
+        cout<<left<<item.name;
+        cout.width(12); 
         cout<<left<<item.bithyear;
-        cout.width(7); 
-        cout<<item.weight;
+        cout.width(8); 
+        cout<<fixed<<setprecision(2)<<weight_as_flo;
         cout.width(11); 
         cout<<item.hair_color;
-        cout.width(7);
+        cout.width(1);
+        cout<<" ";
                 
             for( int i = 0; i < item.intrest.size();i++)
                 {
@@ -128,60 +120,6 @@ using namespace std;
                   cout<<endl;
     }
 
-////////
 
-    void print_matches(register_type & matches){
 
-        for(int i = 0; i < matches.size(); i++){
-            print_hero(matches.at(i));
-        }
-
-    }
-
-////////
-
-    bool compare_matches(hero_type const item,
-                         int const compare){
-        
-        for (int i = 0; i < item.intrest.size(); i++){
-            if(compare == item.intrest.at(i)){
-                return true;
-                }
-        }
-        return false;
-    }
-
-////////
-
-    void search_register(register_type & heroes,
-                         register_type & matches,
-                         int const intrest){
-
-        get_register_1(heroes);
-
-            for(int i = 0; i < heroes.size(); i++){
-                if(compare_matches(heroes.at(i),intrest)){
-                    matches.push_back(heroes.at(i));
-                    }
-                }
-            }
-
-/////////
-
-    void search(register_type & heroes,
-                register_type & matches){
-
-        int like;
-
-        cout<<"Enter your interests (at least one between 1 and 15): ";
-        cin>>like;
-        search_register( heroes,
-                         matches,
-                         like);
-        cout<<"There are "<<matches.size()<<" matching heroes."<<endl;
-        cout<<"Hero name Birth year Weight Hair color Interests"<<endl;
-        cout<<"===================================================="<<endl;
-        print_matches(matches);
-        matches.clear();
-    }
-    
+ 
