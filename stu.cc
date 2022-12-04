@@ -6,8 +6,6 @@
 #include <algorithm>
 
 using namespace std;
-using time_arr = vector<double>;
-
 /////STRUCT////////////////
 
     struct runner
@@ -58,7 +56,7 @@ using runner_arr = vector<runner>;
                 return false;
             }
             else{
-            item.times.insert(item.times.begin(),time);
+                item.times.insert(item.times.begin(),time);
             return true;
             }
     }
@@ -87,13 +85,9 @@ using runner_arr = vector<runner>;
     item.surename = str;
     cin>>str;
     item.lastname = str;
-    cin>>str;
-    temp = str;
-        if(cin.peek() != '\n'){
-            cin>>str;
-            temp = temp + '_' + str;
-        }
-    item.club = temp;
+   
+    getline(cin,str); 
+    item.club = str;
 
     return true;
     }
@@ -107,24 +101,15 @@ using runner_arr = vector<runner>;
 
 /////////
 
-    void print_struct(runner const item){
+    void print_struct(runner & item){
 
-        cout<<fixed<<setw(9)<<item.surename
-        <<fixed<<setw(10)<<item.lastname;
-            for(int i = 0; i < item.club.size();i++){
-                if(item.club[i] == '_'){
-                    item.club[i] = ' ';
-                }
-            }
-        cout<<fixed<<setw(16)<<item.club<<": ";
+        cout<<fixed<<setw(9)<<item.lastname
+        <<fixed<<setw(10)<<item.surename
+        <<fixed<<setw(16)<<item.club<<":";
+
             for(double i = 0.0 ; i < item.times.size(); i++){
-                if(i == 0.0){
-                    cout<<fixed<<setw(2)<<setprecision(2)<<item.times.at(i);
-                }
-                else{
-                    cout<<fixed<<setw(6)<<setprecision(2)<<item.times.at(i);
-                }
-                }
+                cout<<" "<<setprecision(2)<<item.times.at(i);
+            }
         cout<<endl;
     }
 
@@ -143,14 +128,14 @@ using runner_arr = vector<runner>;
                 }
 
             for(auto & person : participants){//Matar in tider på deltagare
-                cout<<"Tider "<<print_surename(person)<<":";
+                cout<<"Tider "<<print_surename(person)<<": ";
                 feed_time(person);
             }
 
         sorter(participants);//sorteras användare
 
         cout<<"Efternamn   Förnamn           Klubb: Tider"<<endl
-        <<"=============================================="<<endl;
+        <<"=========================================="<<endl;
             for(auto & person : participants){
                     print_struct(person);
                     }
