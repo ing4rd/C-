@@ -32,6 +32,7 @@ using namespace std;
     cout<<"Fakulteten av "<< N <<" är "<<sub_fact(N)<<endl;
             }
 
+////////////////////////
 
   void Sub_Mult(string const item,
                 int    const value){
@@ -48,7 +49,7 @@ using namespace std;
     int numb;
     string str;
    
-    cout<<"Mata in en text och ett heltal:";
+    cout<<"Mata in en text och ett heltal: ";
     cin>>str>>numb;
     cout<<"Den multiplicerade texten är ";
     Sub_Mult(str,numb);
@@ -126,7 +127,7 @@ using namespace std;
       cin>>selection;
         if (selection >5 | selection <1){
           cout<<"Fel val!"<<endl;
-          cin.ignore(1,'\n');
+          cin.ignore(1000,'\n');
         }
         else{
           break;
