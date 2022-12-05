@@ -141,6 +141,7 @@ int main(){
 
 
 
+// omiaz320: Samarbetat med antin019, Anton Ingard, samma programm
 #include <iostream> 
 #include <string> 
 #include <iomanip>
@@ -226,7 +227,7 @@ int main(){
 
 //////////
 
-  cout<<"Del 2: Teckenhantering"<<endl<<endl;
+  cout<<"Del 2: Teckenhantering"<<endl;
     for(int i{}; i < 10; ++i){
       cin.get(cha);
         if(isdigit(cha)){
@@ -246,7 +247,7 @@ int main(){
 
 //////////
 
-  cout<<"Del 3: Ordhantering"<<endl<<"Mata in en text:"<<endl;
+  cout<<"Del 3: Ordhantering"<<endl<<"Mata in en text:"<<endl<<endl;
   num = 0;
 
     while(cin>>str){
@@ -284,7 +285,5 @@ int main(){
    return 0; 
  }
  
-
-
 
 
