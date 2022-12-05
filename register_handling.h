@@ -12,8 +12,8 @@ using register_type = std::vector<hero_type>;
 
     void search(register_type & heroes,
                 register_type & matches,
-                std::string const file_name);
+                std::string const & file_name);
     void add(register_type & heroes,
-             std::string const file_name);
+             std::string const & file_name);
 
 # endif
