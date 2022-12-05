@@ -11,28 +11,6 @@
 
 using namespace std;
 
-///////////////
-
-    bool operator ==(hero_type const & a,
-                     hero_type const & b){
-        
-        if(a.name == b.name &&
-           a.bithyear == b.bithyear &&
-           a.weight == b.weight &&
-           a.hair_color == b.hair_color){
-                if (a.intrest.size() == b.intrest.size()){
-                    for( int i = 0; i< a.intrest.size(); i++){
-                        if(a.intrest.at(i) != b.intrest.at(i)){
-                            return false;
-                            }
-                        }
-                    return true;
-                    }
-                }
-
-        return false;
-        }
-
 /////////////
 
     bool compare_matches(hero_type const & item,
@@ -49,7 +27,7 @@ using namespace std;
 ///////////
 
     void print_to_stream(hero_type const & item,
-                         ostream & write_to){
+                         ostream         & write_to){
 
         write_to<<" "<<item.name<<" "<<item.bithyear
         <<" "<<item.weight<<" "<<item.hair_color;
@@ -66,7 +44,7 @@ using namespace std;
     bool sort_by_name(hero_type const & a,
                       hero_type const & b){
 
-        return a.name < b.name;
+        return a.name[0] < b.name[0];
 
                       }
 
@@ -74,7 +52,6 @@ using namespace std;
 
     void feed_struct(hero_type & hero){
 
-        stringstream ss;
         string str;
         string color;
         string num;
@@ -88,7 +65,7 @@ using namespace std;
         hero.weight = flo;
         hero.hair_color = color;
         getline(cin , str);
-        ss.str(str);
+        stringstream ss{str};
             while(ss >> like){
                 hero.intrest.insert(hero.intrest.begin(),like);
                     }
