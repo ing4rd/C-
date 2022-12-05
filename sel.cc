@@ -140,7 +140,6 @@ int main(){
 
 
 
-// omiaz320: Samarbetat med antin019, Anton Ingard, samma programm
 #include <iostream> 
 #include <string> 
 #include <iomanip>
@@ -173,9 +172,7 @@ int main(){
 
 //////////
 
-    cout<<"Del 1: Temperaturtabell"<<endl;    
-        //cout<<"Ange startvärde: ";
-        
+    cout<<"Del 1: Temperaturtabell"<<endl; 
         do{
            cout<<"Ange startvärde: ";
         
@@ -285,6 +282,4 @@ int main(){
     }
    return 0; 
  }
- 
-
 
