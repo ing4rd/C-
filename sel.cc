@@ -247,7 +247,7 @@ int main(){
 
 //////////
 
-  cout<<"Del 3: Ordhantering"<<endl<<"Mata in en text:"<<endl<<endl;
+  cout<<"Del 3: Ordhantering"<<endl<<"Mata in en text:"<<endl;
   num = 0;
 
     while(cin>>str){
@@ -282,7 +282,7 @@ int main(){
       cout<<"Medelordlängden var "<<fixed<<setw(1)<<setprecision(1)<<average<<" tecken."<<endl;
       return 0;
     }
-    
+    return 0;
  }
  
 
