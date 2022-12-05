@@ -141,7 +141,6 @@ int main(){
 
 
 
-// omiaz320: Samarbetat med antin019, Anton Ingard, samma programm
 #include <iostream> 
 #include <string> 
 #include <iomanip>
@@ -227,7 +226,7 @@ int main(){
 
 //////////
 
-  cout<<"Del 2: Teckenhantering"<<endl;
+  cout<<"Del 2: Teckenhantering"<<endl<<endl;
     for(int i{}; i < 10; ++i){
       cin.get(cha);
         if(isdigit(cha)){
@@ -282,7 +281,7 @@ int main(){
       cout<<"Medelordlängden var "<<fixed<<setw(1)<<setprecision(1)<<average<<" tecken."<<endl;
       return 0;
     }
-    return 0;
+   return 0; 
  }
  
 
