@@ -1,164 +1,125 @@
 // antin019: Samarbetat med omiaz320, Omid Azimi, samma program
 # include <string>
-# include <iostream>
 # include <iomanip>
+# include <iostream>
 # include <fstream>
 # include <sstream>
 # include <algorithm>
 
-# include "hero_handling.h"
 # include "register_handling.h"
+# include "hero_handling.h"
 
 using namespace std;
 
-////////////////////////////////////////////////////////////
-/////ADD////////////////////////////////////////////////////
+///////////////
 
+    bool operator ==(hero_type const & a,
+                     hero_type const & b){
+        
+        if(a.name == b.name &&
+           a.bithyear == b.bithyear &&
+           a.weight == b.weight &&
+           a.hair_color == b.hair_color){
+                if (a.intrest.size() == b.intrest.size()){
+                    for( int i = 0; i< a.intrest.size(); i++){
+                        if(a.intrest.at(i) != b.intrest.at(i)){
+                            return false;
+                            }
+                        }
+                    return true;
+                    }
+                }
 
-    bool check_for_existing_hero(register_type const item,
-                                 hero_type     const hero){
+        return false;
+        }
 
-        for(int i = 0; i < item.size(); i++){
-            if(hero == item.at(i)){
+/////////////
+
+    bool compare_matches(hero_type const & item,
+                         int       const   compare){
+        
+        for (int i = 0; i < item.intrest.size(); i++){
+            if(compare == item.intrest.at(i)){
                 return true;
-            }
+                }
         }
         return false;
     }
 
+///////////
 
-////////
+    void print_to_stream(hero_type const & item,
+                         ostream & write_to){
 
-    void feed_struct_from_stream(register_type & item,
-                                 istream & read_from){
+        write_to<<" "<<item.name<<" "<<item.bithyear
+        <<" "<<item.weight<<" "<<item.hair_color;
 
-        hero_type hero;
-        string text;
-        stringstream ss; 
-        int num;
+            for( int i = 0; i < item.intrest.size();i++){
+                write_to<<" "<<item.intrest.at(i);
+                    }
 
-        getline(read_from , text);
-        ss.str(text);
+        write_to<<endl;
+    }
+
+//////////
+
+    bool sort_by_name(hero_type const & a,
+                      hero_type const & b){
+
+        return a.name < b.name;
+
+                      }
+
+///////////
+
+    void feed_struct(hero_type & hero){
+
+        stringstream ss;
+        string str;
+        string color;
+        string num;
+        string flo;
+        int like;    
         
-        ss >> hero.name 
-         >> hero.bithyear
-         >> hero.weight
-         >> hero.hair_color;
-            while(ss >> num){ 
-                hero.intrest.push_back(num);
-                }
-        item.push_back(hero);
-        }
-
-/////////
-
-    void add_to_register(register_type & item,
-                           string const file_name){
-
-        ofstream write_to;
-        string text;
-
-        if(!(write_to.is_open())){
-            cout<<"Did not open file in add_to_register!";
-        }
-
-        write_to.open(file_name);
-            for(int i = 0; i < item.size(); i++){
-                print_to_stream(item.at(i), write_to);
-            }
-        write_to.close();
-    }
-
-/////////
-
-    void get_register(register_type & item,
-                        string const file_name){
         
-        ifstream read_from;
-
-        if(!(read_from.is_open())){
-            cout<<"Did not open file in get_register!";
-        }
-
-        read_from.open(file_name);
-            while(!read_from.eof()){
-                feed_struct_from_stream(item,read_from);
-            }
-        read_from.close();
+        cin>>str>>num>>flo>>color;
+        hero.name = str;
+        hero.bithyear = num;
+        hero.weight = flo;
+        hero.hair_color = color;
+        getline(cin , str);
+        ss.str(str);
+            while(ss >> like){
+                hero.intrest.insert(hero.intrest.begin(),like);
+                    }
+        sort(hero.intrest.begin(), hero.intrest.end());
+       
     }
 
-////////
+////////////
 
-    void add(register_type & heroes,
-             string const file_name){
+    void print_hero(hero_type const & item){
 
-        hero_type hero;
+        double weight_as_flo = stod(item.weight);
 
-        get_register(heroes,file_name);
-
-            while(true){
-
-                cout<<"Enter hero information:"<<endl;
-
-                    feed_struct(hero);
-
-                    if(check_for_existing_hero(heroes,hero)){
-                        cout<<"Hero already in register. ";
-                    }
-                    else{
-                        heroes.push_back(hero);
-                        sort(heroes.begin(),heroes.end(),sort_by_name);
-                        add_to_register(heroes,file_name);
-                        cout<<"The hero was added to the register on file "<<file_name<<endl;
-                        break;
-                    }
-            }
-    }
-
-/////////////////////////////////
-////SEARCH///////////////////////
-
-    void print_matches(register_type & matches){
-
-        for(int i = 0; i < matches.size(); i++){
-            print_hero(matches.at(i));
-        }
-
-    }
-
-////////
-
-    void search_register(register_type & heroes,
-                         register_type & matches,
-                         int const intrest,
-                         string const file_name){
-
-        get_register(heroes,file_name);
-
-            for(int i = 0; i < heroes.size(); i++){
-                if(compare_matches(heroes.at(i),intrest)){
-                    matches.push_back(heroes.at(i));
-                    }
+        cout.width(11); 
+        cout<<left<<item.name;
+        cout.width(12); 
+        cout<<left<<item.bithyear;
+        cout.width(8); 
+        cout<<fixed<<setprecision(2)<<weight_as_flo;
+        cout.width(11); 
+        cout<<item.hair_color;
+        cout.width(1);
+        cout<<" ";
+                
+            for( int i = 0; i < item.intrest.size();i++)
+                {
+                  cout<<right<<setw(3)<<item.intrest.at(i);
                 }
-            }
-
-///////
-
-    void search(register_type & heroes,
-                register_type & matches,
-                string const file_name){
-
-        int like;
-
-        cout<<"Enter your interests (at least one between 1 and 15): ";
-        cin>>like;
-        search_register( heroes,
-                         matches,
-                         like,
-                         file_name);
-        cout<<"There are "<<matches.size()<<" matching heroes."<<endl;
-        cout<<"Hero name  Birth year  Weight  Hair color  Interests"<<endl;
-        cout<<"===================================================="<<endl;
-        print_matches(matches);
-        matches.clear();
+                  cout<<endl;
     }
+
+
+
+ 
