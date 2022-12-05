@@ -13,8 +13,8 @@ using namespace std;
 
 ///////////////
 
-    bool operator ==(hero_type const a,
-                     hero_type const b){
+    bool operator ==(hero_type const & a,
+                     hero_type const & b){
         
         if(a.name == b.name &&
            a.bithyear == b.bithyear &&
@@ -35,8 +35,8 @@ using namespace std;
 
 /////////////
 
-    bool compare_matches(hero_type const item,
-                         int       const compare){
+    bool compare_matches(hero_type const & item,
+                         int       const   compare){
         
         for (int i = 0; i < item.intrest.size(); i++){
             if(compare == item.intrest.at(i)){
@@ -48,7 +48,7 @@ using namespace std;
 
 ///////////
 
-    void print_to_stream(hero_type const item,
+    void print_to_stream(hero_type const & item,
                          ostream & write_to){
 
         write_to<<" "<<item.name<<" "<<item.bithyear
@@ -63,8 +63,8 @@ using namespace std;
 
 //////////
 
-    bool sort_by_name(hero_type const a,
-                      hero_type const b){
+    bool sort_by_name(hero_type const & a,
+                      hero_type const & b){
 
         return a.name < b.name;
 
@@ -98,7 +98,7 @@ using namespace std;
 
 ////////////
 
-    void print_hero(hero_type const item){
+    void print_hero(hero_type const & item){
 
         double weight_as_flo = stod(item.weight);
 
