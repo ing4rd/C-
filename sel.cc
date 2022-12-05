@@ -141,7 +141,7 @@ int main(){
 
 
 
-
+// omiaz320: Samarbetat med antin019, Anton Ingard, samma programm
 #include <iostream> 
 #include <string> 
 #include <iomanip>
@@ -175,15 +175,15 @@ int main(){
 //////////
 
     cout<<"Del 1: Temperaturtabell"<<endl;    
-     // while(true){
-        
         cout<<"Ange startvärde: ";
         
         do{
           cin>>start;
-          if(start < -273.15){
-            cout<<"Felaktigt startvärde!"<<endl;
+          cin.ignore(1000,'\n');
+          if(start >= -273.15)
+          break;{
             }
+            cout<<"Felaktigt startvärde!"<<endl;
         } 
         while (start < -273.15);
 
@@ -228,16 +228,16 @@ int main(){
 //////////
 
   cout<<"Del 2: Teckenhantering"<<endl;
-    for(int i{}; i < 10; i++){
+    for(int i{}; i < 10; ++i){
       cin.get(cha);
         if(isdigit(cha)){
-          num++;
+          num+=1;
         }
         else if(isalpha(cha)){
-          letters++;
+          letters+=1;
         }
         else if(isspace(cha)){
-          blank++;
+          blank+=1;
         }
     }
 
@@ -252,7 +252,7 @@ int main(){
 
     while(cin>>str){
 
-        ///no_text_buffer = false;
+        no_text_buffer = false;
 
         sum = sum + str.size();
 
@@ -268,7 +268,7 @@ int main(){
         }
         num++;
     }
-    if(num == 0){
+    if(no_text_buffer){
       cout<<"Inga ord matades in."<<endl;
     }
     else{
@@ -280,7 +280,12 @@ int main(){
       cout<<"Det kortaste ordet var \""<<short_word<<"\" med "<<short_word.size()<<" tecken."<<endl;
       cout<<"Det längsta ordet var \""<<long_word<<"\" med "<<long_word.size()<<" tecken."<<endl;
       cout<<"Medelordlängden var "<<fixed<<setw(1)<<setprecision(1)<<average<<" tecken."<<endl;
+      return 0;
     }
-    return 0;
+    
  }
  
+
+
+
+
