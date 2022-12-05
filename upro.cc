@@ -21,40 +21,15 @@ using namespace std;
       }
               } 
 
-////////////    
-
-  void Factorial_Program(){
-
-    int N;
-
-    cout<<"Mata in ett heltal: ";
-    cin>> N;
-    cout<<"Fakulteten av "<< N <<" är "<<sub_fact(N)<<endl;
-            }
-
 ////////////////////////
 
-  void Sub_Mult(string const item,
-                int    const value){
+  void Sub_Mult(string const & item,
+                int    const   value){
 
     for (int i = 0; i < value; i++ ){
       cout<<item;
     }
   }
-
-//////////////
-
-  void Multiply(){
-
-    int numb;
-    string str;
-   
-    cout<<"Mata in en text och ett heltal: ";
-    cin>>str>>numb;
-    cout<<"Den multiplicerade texten är ";
-    Sub_Mult(str,numb);
-    cout<<endl;
-    }
 
 //////////////////////////
 
@@ -67,57 +42,26 @@ using namespace std;
     b = c; 
                   }
 
-///////////
-
-  void Swap(){
-
-  int a;
-  double b;
- 
-  cout<<"Mata in ett heltal och ett flyttal: ";
-  cin>>a>>b;
-  Sub_swap(a,b);
-  cout<<"Heltalets värde är nu "<<a<<endl
-  <<"Flyttalets värde är nu "<<fixed<<setw(1)<<setprecision(1)<<b<<endl;
-            }
 
 ////////////////////////
 
-  void Sub_calc_string(string const text_1,
-                      string const text_2,
-                      int& total_length,
-                      double& mean_length){
+  void Sub_calc_string(string const & text_1,
+                      string  const & text_2,
+                      int           & total_length,
+                      double        & mean_length){
    
     total_length = text_1.size() + text_2.size();
     mean_length = (static_cast<double>(total_length) / 2.0);
                      }
 
-////////////////////////////////////              
-
-  void Calc_string(){
-
-    int total_length;
-    double mean_length;
-    string text_1;
-    string text_2;
-
-
-    cout<<"Mata in två ord: ";
-    cin>>text_1;
-    cin>>text_2;
-    Sub_calc_string(text_1,
-                    text_2,
-                    total_length,
-                    mean_length);
-    cout<<"Totallängd: "<<total_length<<endl
-    <<"Medellängd: "<<fixed<<setw(2)<<setprecision(1)<<mean_length<<endl;
-  }
-
 ////////////////////////
 
-  void Menu_Selection(int& selection){
+  void Menu_Selection(int & selection){
 
-    while(true){
+    bool out_of_range;
+
+    do{
+      out_of_range = false;
       cout<<"1. Beräkna N-fakultet."<<endl;
       cout<<"2. Multiplicera en sträng."<<endl;
       cout<<"3. Byta värden på ett heltal och ett flyttal."<<endl;
@@ -125,14 +69,12 @@ using namespace std;
       cout<<"5. Avsluta programmet."<<endl;
       cout<<"Val: ";
       cin>>selection;
-        if (selection >5 | selection <1){
+        if(selection > 5 || selection < 1){
           cout<<"Fel val!"<<endl;
+          out_of_range = true;
           cin.ignore(1000,'\n');
         }
-        else{
-          break;
-        }   
-    }
+    }while(out_of_range);
   }
     
 //Main///////////////////
@@ -140,6 +82,15 @@ using namespace std;
 int main(){
 
   int selection;
+  int N;
+  int numb;
+  string str;
+  int a;
+  double b;
+  int total_length;
+  double mean_length;
+  string text_1;
+  string text_2;
   
 
 ///////////
@@ -149,19 +100,43 @@ int main(){
         Menu_Selection(selection);
 
           if(selection == 1){
-            Factorial_Program();
+            //Factorial_Program();
+            cout<<"Mata in ett heltal: ";
+            cin>> N;
+            cout<<"Fakulteten av "<< N <<" är "<<sub_fact(N)<<endl;
+           
           }
 
           if(selection == 2){
-            Multiply();
+            //Multiply();
+            cout<<"Mata in en text och ett heltal: ";
+            cin>>str>>numb;
+            cout<<"Den multiplicerade texten är ";
+            Sub_Mult(str,numb);
+            cout<<endl;
+            
           } 
 
           if(selection == 3){
-            Swap();
+            //Swap();
+            cout<<"Mata in ett heltal och ett flyttal: ";
+            cin>>a>>b;
+            Sub_swap(a,b);
+            cout<<"Heltalets värde är nu "<<a<<endl
+            <<"Flyttalets värde är nu "<<fixed<<setw(1)<<setprecision(1)<<b<<endl;
           }
 
           if(selection == 4){
-            Calc_string();
+            //Calc_string();
+            cout<<"Mata in två ord: ";
+            cin>>text_1;
+            cin>>text_2;
+            Sub_calc_string(text_1,
+                            text_2,
+                            total_length,
+                            mean_length);
+            cout<<"Totallängd: "<<total_length<<endl
+            <<"Medellängd: "<<fixed<<setw(2)<<setprecision(1)<<mean_length<<endl;
           }
 
           if( selection == 5){
