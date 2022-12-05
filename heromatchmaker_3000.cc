@@ -26,7 +26,7 @@ using register_type = vector<hero_type>;
 
 ////////////////////////
 
-    void menu_selection(string const file_name){
+    void menu_selection(string const & file_name){
 
         int num;
         register_type heroes;
