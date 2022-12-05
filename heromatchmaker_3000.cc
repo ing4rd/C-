@@ -37,30 +37,27 @@ using register_type = vector<hero_type>;
                 cout<<"1) Add new hero to register file"<<endl
                     <<"2) Find matching heroes"<<endl
                     <<"3) Quit program"<<endl;
-                do{
-                    cout<<"Select: ";
-                cin>>num;
+                    do{
+                        cout<<"Select: ";
+                        cin>>num;
                     }while (num < 1 || num > 3);
-                    
 
-                    if(num == 1){
-                        add(heroes,
-                            file_name);
-                    }
-                    else if(num == 2){
-                        search(heroes,
-                               matches,
-                               file_name);
-                    }
-                    else if(num == 3){
-                        cout<<"Terminating Hero Matchmaker 3000!";
-                    }
-                heroes.clear();
+                            if(num == 1){
+                                add(heroes,
+                                    file_name);
+                            }
+                            else if(num == 2){
+                                search(heroes,
+                                       matches,
+                                       file_name);
+                            }
+                            else if(num == 3){
+                                cout<<"Terminating Hero Matchmaker 3000!";
+                            }
+                        heroes.clear();
 
             }while(num != 3);
-
     }
-
 
 ////////////////////////
 
