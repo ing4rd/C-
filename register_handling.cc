@@ -15,8 +15,8 @@ using namespace std;
 /////ADD////////////////////////////////////////////////////
 
 
-    bool check_for_existing_hero(register_type const & item,
-                                 hero_type     const & hero){
+    bool check_for_existing_hero(Register_type const & item,
+                                 Hero_type     const & hero){
 
         for(int i = 0; i < item.size(); i++){
             if(hero.name == item.at(i).name){
@@ -29,10 +29,10 @@ using namespace std;
 
 ////////
 
-    void feed_struct_from_stream(register_type  & item,
+    void feed_struct_from_stream(Register_type  & item,
                                  istream        & read_from){
 
-        hero_type hero;
+        Hero_type hero;
         string text;
         stringstream ss; 
         int num;
@@ -52,7 +52,7 @@ using namespace std;
 
 /////////
 
-    void add_to_register(register_type       & item,
+    void add_to_register(Register_type       & item,
                          string        const & file_name){
 
         ofstream write_to;
@@ -67,7 +67,7 @@ using namespace std;
 
 /////////
 
-    void get_register(register_type       & item,
+    void get_register(Register_type       & item,
                         string      const & file_name){
         
         ifstream read_from;
@@ -81,7 +81,7 @@ using namespace std;
 
 ////////
 
-    void add(register_type       & heroes,
+    void add(Register_type       & heroes,
              string        const & file_name){
 
         bool new_hero_added = false;
@@ -92,7 +92,7 @@ using namespace std;
 
                 cout<<"Enter hero information:"<<endl;
 
-                hero_type hero{};
+                Hero_type hero{};
                 feed_struct(hero);
 
                     if(check_for_existing_hero(heroes,hero)){
@@ -111,7 +111,7 @@ using namespace std;
 /////////////////////////////////
 ////SEARCH///////////////////////
 
-    void print_matches(register_type & matches){
+    void print_matches(Register_type & matches){
 
         for(int i = 0; i < matches.size(); i++){
             print_hero(matches.at(i));
@@ -121,8 +121,8 @@ using namespace std;
 
 ////////
 
-    void search_register(register_type       & heroes,
-                         register_type       & matches,
+    void search_register(Register_type       & heroes,
+                         Register_type       & matches,
                          int           const   intrest,
                          string        const & file_name){
 
@@ -162,8 +162,8 @@ using namespace std;
 
 ////////
 
-    void search(register_type      & heroes,
-                register_type      & matches,
+    void search(Register_type      & heroes,
+                Register_type      & matches,
                 string       const & file_name){
 
         vector<int> like;
