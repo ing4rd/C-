@@ -13,89 +13,89 @@ using namespace std;
 
 /////////////
 
-    bool compare_matches(hero_type const & item,
-                         int       const   compare){
+bool compare_matches(Hero_type const & item,
+		     int       const   compare){
         
-        for (int i = 0; i < item.intrest.size(); i++){
-            if(compare == item.intrest.at(i)){
-                return true;
-                }
-        }
-        return false;
+  for (int i = 0; i < item.intrest.size(); i++){
+    if(compare == item.intrest.at(i)){
+      return true;
     }
+  }
+  return false;
+}
 
 ///////////
 
-    void print_to_stream(hero_type const & item,
-                         ostream         & write_to){
+void print_to_stream(Hero_type const & item,
+		     ostream         & write_to){
 
-        write_to<<" "<<item.name<<" "<<item.bithyear
-        <<" "<<item.weight<<" "<<item.hair_color;
+  write_to<<" "<<item.name<<" "<<item.bithyear
+	  <<" "<<item.weight<<" "<<item.hair_color;
 
-            for( int i = 0; i < item.intrest.size();i++){
-                write_to<<" "<<item.intrest.at(i);
-                    }
+  for( int i = 0; i < item.intrest.size();i++){
+    write_to<<" "<<item.intrest.at(i);
+  }
 
-        write_to<<endl;
-    }
+  write_to<<endl;
+}
 
 //////////
 
-    bool sort_by_name(hero_type const & a,
-                      hero_type const & b){
+bool sort_by_name(Hero_type const & a,
+		  Hero_type const & b){
 
-        return a.name[0] < b.name[0];
+  return a.name[0] < b.name[0];
 
-                      }
+}
 
 ///////////
 
-    void feed_struct(hero_type & hero){
+void feed_struct(Hero_type & hero){
 
-        string str;
-        string color;
-        string num;
-        string flo;
-        int like;    
+  string str;
+  string color;
+  string num;
+  string flo;
+  int like;    
         
         
-        cin>>str>>num>>flo>>color;
-        hero.name = str;
-        hero.bithyear = num;
-        hero.weight = flo;
-        hero.hair_color = color;
-        getline(cin , str);
-        stringstream ss{str};
-            while(ss >> like){
-                hero.intrest.insert(hero.intrest.begin(),like);
-                    }
-        sort(hero.intrest.begin(), hero.intrest.end());
+  cin>>str>>num>>flo>>color;
+  hero.name = str;
+  hero.bithyear = num;
+  hero.weight = flo;
+  hero.hair_color = color;
+  getline(cin , str);
+  stringstream ss{str};
+  while(ss >> like){
+    hero.intrest.insert(hero.intrest.begin(),like);
+  }
+  sort(hero.intrest.begin(), hero.intrest.end());
        
-    }
+}
 
 ////////////
 
-    void print_hero(hero_type const & item){
+void print_hero(Hero_type const & item){
 
-        double weight_as_flo = stod(item.weight);
+  double weight_as_flo = stod(item.weight);
 
-        cout.width(11); 
-        cout<<left<<item.name;
-        cout.width(12); 
-        cout<<left<<item.bithyear;
-        cout.width(8); 
-        cout<<fixed<<setprecision(2)<<weight_as_flo;
-        cout.width(11); 
-        cout<<item.hair_color;
-        cout.width(1);
-        cout<<" ";
+  cout.width(11); 
+  cout<<left<<item.name;
+  cout.width(12); 
+  cout<<left<<item.bithyear;
+  cout.width(8); 
+  cout<<fixed<<setprecision(2)<<weight_as_flo;
+  cout.width(11); 
+  cout<<item.hair_color;
+  cout.width(1);
+  cout<<" ";
                 
-            for( int i = 0; i < item.intrest.size();i++)
-                {
-                  cout<<right<<setw(3)<<item.intrest.at(i);
-                }
-                  cout<<endl;
+  for( int i = 0; i < item.intrest.size();i++)
+    {
+      cout<<right<<setw(3)<<item.intrest.at(i);
     }
+  cout<<endl;
+}
 
 
 
