@@ -12,22 +12,22 @@ int main(){
 
   ///Variable//////////
 
-  int start;
-  int end;
-  int letters = 0;
-  int num = 0;
-  int blank = 0;
-  double sum = 0;
-  double kel;
-  double far;
-  double rem;
-  double average;
-  int loopcounter;
-  char cha;
+  int start{};
+  int end{};
+  int letters {};
+  int num {};
+  int blank {};
+  double sum {};
+  double kel {};
+  double far{};
+  double rem{};
+  double average{};
+  int loopcounter{};
+  char cha{};
   bool no_text_buffer = true;
-  string str;
-  string short_word;
-  string long_word;
+  string str{};
+  string short_word{};
+  string long_word{};
   bool failed_start_value;
   bool input_failed;
 
@@ -36,13 +36,13 @@ int main(){
   cout<<"Del 1: Temperaturtabell"<<endl;    
         
   do{
-    failed_start_value = false;
+    failed_start_value = true;
     cout<<"Ange startvärde: ";
         
     cin>>start;
     cin.ignore(1000,'\n');
-    if(start < -273.15){
-      failed_start_value = true;
+    if(start <= -273.15){
+      failed_start_value = false;
       cout<<"Felaktigt startvärde!"<<endl;
     }
 
@@ -69,7 +69,7 @@ int main(){
 
   cout<<"Celsius   Kelvin   Fahrenheit   Reaumur"<<endl
       <<"---------------------------------------"<<endl;
-  loopcounter = (end - start);
+  loopcounter = (end - start)+1;
   for(int i{} ; i < loopcounter ; i++){
     cout.width(7);
     cout<<start;
