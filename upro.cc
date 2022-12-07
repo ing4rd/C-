@@ -62,12 +62,12 @@ using namespace std;
 
     do{
       out_of_range = false;
-      cout<<"1. Beräkna N-fakultet."<<endl;
-      cout<<"2. Multiplicera en sträng."<<endl;
-      cout<<"3. Byta värden på ett heltal och ett flyttal."<<endl;
-      cout<<"4. Beräkna totala längden samt medellängden på två strängar."<<endl;
-      cout<<"5. Avsluta programmet."<<endl;
-      cout<<"Val: ";
+      cout<<"1. Beräkna N-fakultet."<<endl
+          <<"2. Multiplicera en sträng."<<endl
+          <<"3. Byta värden på ett heltal och ett flyttal."<<endl
+          <<"4. Beräkna totala längden samt medellängden på två strängar."<<endl
+          <<"5. Avsluta programmet."<<endl
+          <<"Val: ";
       cin>>selection;
         if(selection > 5 || selection < 1){
           cout<<"Fel val!"<<endl;
@@ -77,21 +77,69 @@ using namespace std;
     }while(out_of_range);
   }
     
+/////////////////////////
+
+  void choice_1(int const selection){
+
+      int numb;
+      string str;
+      int N;
+
+          if(selection == 1){
+            cout<<"Mata in ett heltal: ";
+            cin >> N;
+            cout<<"Fakulteten av "<< N <<" är "<<sub_fact(N)<<endl;
+          }
+
+          else if(selection == 2){
+            cout<<"Mata in en text och ett heltal: ";
+            cin >> str >>  numb  ;
+            cout<<"Den multiplicerade texten är ";
+            Sub_Mult(str,numb);
+            cout<<endl;
+          } 
+
+  }
+
+///////////////////
+
+  void choice_2(int const selection){
+
+    int a;
+    double b;
+    int total_length;
+    double mean_length;
+    string text_1;
+    string text_2;
+
+
+
+          if(selection == 3){
+            cout<<"Mata in ett heltal och ett flyttal: ";
+            cin >>  a >>  b;
+            Sub_swap(a,b);
+            cout<<"Heltalets värde är nu "<<  a <<endl
+                <<"Flyttalets värde är nu "<<fixed<<setw(1)<<setprecision(1)<<  b <<endl;
+          }
+
+          else if(selection == 4){
+            cout<<"Mata in två ord: ";
+            cin >>  text_1;
+            cin >>  text_2;
+            Sub_calc_string(text_1,
+                            text_2,
+                            total_length,
+                            mean_length);
+            cout<<"Totallängd: "<<  total_length  <<endl
+                <<"Medellängd: "<<fixed<<setw(2)<<setprecision(1)<< mean_length <<endl;
+          }
+  }
+
 //Main///////////////////
 
 int main(){
 
   int selection;
-  int N;
-  int numb;
-  string str;
-  int a;
-  double b;
-  int total_length;
-  double mean_length;
-  string text_1;
-  string text_2;
-  
 
 ///////////
 
@@ -99,50 +147,16 @@ int main(){
     do{
         Menu_Selection(selection);
 
-          if(selection == 1){
-            //Factorial_Program();
-            cout<<"Mata in ett heltal: ";
-            cin>> N;
-            cout<<"Fakulteten av "<< N <<" är "<<sub_fact(N)<<endl;
-           
+          if(selection == 1 || selection == 2){
+            choice_1(selection);
           }
 
-          if(selection == 2){
-            //Multiply();
-            cout<<"Mata in en text och ett heltal: ";
-            cin>>str>>numb;
-            cout<<"Den multiplicerade texten är ";
-            Sub_Mult(str,numb);
-            cout<<endl;
-            
-          } 
-
-          if(selection == 3){
-            //Swap();
-            cout<<"Mata in ett heltal och ett flyttal: ";
-            cin>>a>>b;
-            Sub_swap(a,b);
-            cout<<"Heltalets värde är nu "<<a<<endl
-            <<"Flyttalets värde är nu "<<fixed<<setw(1)<<setprecision(1)<<b<<endl;
+          else if(selection == 3 || selection == 4){
           }
 
-          if(selection == 4){
-            //Calc_string();
-            cout<<"Mata in två ord: ";
-            cin>>text_1;
-            cin>>text_2;
-            Sub_calc_string(text_1,
-                            text_2,
-                            total_length,
-                            mean_length);
-            cout<<"Totallängd: "<<total_length<<endl
-            <<"Medellängd: "<<fixed<<setw(2)<<setprecision(1)<<mean_length<<endl;
-          }
-
-          if( selection == 5){
-            cout<<"Ha en bra dag!"<<endl;
-          }
     }while(selection != 5);
+
+  cout<<"Ha en bra dag!"<<endl;
 
     return 0;
 }
