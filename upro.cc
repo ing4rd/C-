@@ -11,7 +11,7 @@ using namespace std;
 
   int sub_fact(int const item){
       
-    int I = item;
+    int I {item};
 
       if (I == 0){
         return 1;
@@ -35,7 +35,7 @@ using namespace std;
 
   void Sub_swap(int&     a,
                 double&  b){
-    double c;
+    double c{};
 
     c = a;
     a = static_cast<int>(ceil(b));
@@ -81,9 +81,9 @@ using namespace std;
 
   void choice_1(int const selection){
 
-      int numb;
-      string str;
-      int N;
+      int numb{};
+      string str{};
+      int N{};
 
           if(selection == 1){
             cout<<"Mata in ett heltal: ";
@@ -105,12 +105,12 @@ using namespace std;
 
   void choice_2(int const selection){
 
-    int a;
-    double b;
-    int total_length;
-    double mean_length;
-    string text_1;
-    string text_2;
+    int a{};
+    double b{};
+    int total_length{};
+    double mean_length{};
+    string text_1{};
+    string text_2{};
 
 
 
@@ -139,7 +139,7 @@ using namespace std;
 
 int main(){
 
-  int selection;
+  int selection{};
 
 ///////////
 
@@ -152,6 +152,7 @@ int main(){
           }
 
           else if(selection == 3 || selection == 4){
+            choice_2(selection);
           }
 
     }while(selection != 5);
