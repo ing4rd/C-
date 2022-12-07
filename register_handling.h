@@ -8,12 +8,12 @@
 
 #include  "hero_handling.h"
 
-using register_type = std::vector<hero_type>;
+using Register_type = std::vector<Hero_type>;
 
-    void search(register_type & heroes,
-                register_type & matches,
-                std::string const & file_name);
-    void add(register_type & heroes,
-             std::string const & file_name);
+void search(Register_type & heroes,
+	    Register_type & matches,
+	    std::string const & file_name);
+void add(Register_type & heroes,
+	 std::string const & file_name);
 
 # endif
