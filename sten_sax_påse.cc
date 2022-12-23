@@ -67,7 +67,7 @@ void seting_values(int &AI,
         }
 
         cin >> temp;
-        if (temp == "STEN" || temp == "sten")
+        if (temp == "sten")
         {
             player = 1;
         }
